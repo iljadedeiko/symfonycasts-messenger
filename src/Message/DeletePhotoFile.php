@@ -19,17 +19,17 @@ declare(strict_types=1);
 
 namespace App\Message;
 
-class AddPonkaToImage
+class DeletePhotoFile
 {
-    private int $imagePostId;
+    private string $filename;
 
-    public function __construct(int $imagePostId)
+    public function __construct(string $filename)
     {
-        $this->imagePostId = $imagePostId;
+        $this->filename = $filename;
     }
 
-    public function getImagePostId(): int
+    public function getFilename(): string
     {
-        return $this->imagePostId;
+        return $this->filename;
     }
 }

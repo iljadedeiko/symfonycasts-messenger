@@ -19,7 +19,7 @@ class PhotoFileManager
         $this->publicAssetBaseUrl = $publicAssetBaseUrl;
     }
 
-    public function uploadImage(File $file)
+    public function uploadImage(File $file): string
     {
         if ($file instanceof UploadedFile) {
             $originalFilename = $file->getClientOriginalName();

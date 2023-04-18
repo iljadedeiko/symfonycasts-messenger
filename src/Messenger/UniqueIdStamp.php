@@ -17,19 +17,21 @@
 
 declare(strict_types=1);
 
-namespace App\Message;
+namespace App\Messenger;
 
-class AddPonkaToImage
+use Symfony\Component\Messenger\Stamp\StampInterface;
+
+class UniqueIdStamp implements StampInterface
 {
-    private int $imagePostId;
+    private string $uniqueId;
 
-    public function __construct(int $imagePostId)
+    public function __construct()
     {
-        $this->imagePostId = $imagePostId;
+        $this->uniqueId = uniqid('', true);
     }
 
-    public function getImagePostId(): int
+    public function getUniqueId(): string
     {
-        return $this->imagePostId;
+        return $this->uniqueId;
     }
 }
