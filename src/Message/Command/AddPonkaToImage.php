@@ -17,21 +17,19 @@
 
 declare(strict_types=1);
 
-namespace App\Message;
+namespace App\Message\Command;
 
-use App\Entity\ImagePost;
-
-class DeleteImagePost
+class AddPonkaToImage
 {
-    private ImagePost $imagePost;
+    private int $imagePostId;
 
-    public function __construct(ImagePost $imagePost)
+    public function __construct(int $imagePostId)
     {
-        $this->imagePost = $imagePost;
+        $this->imagePostId = $imagePostId;
     }
 
-    public function getImagePost(): ImagePost
+    public function getImagePostId(): int
     {
-        return $this->imagePost;
+        return $this->imagePostId;
     }
 }

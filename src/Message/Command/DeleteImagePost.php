@@ -17,19 +17,21 @@
 
 declare(strict_types=1);
 
-namespace App\Message;
+namespace App\Message\Command;
 
-class DeletePhotoFile
+use App\Entity\ImagePost;
+
+class DeleteImagePost
 {
-    private string $filename;
+    private ImagePost $imagePost;
 
-    public function __construct(string $filename)
+    public function __construct(ImagePost $imagePost)
     {
-        $this->filename = $filename;
+        $this->imagePost = $imagePost;
     }
 
-    public function getFilename(): string
+    public function getImagePost(): ImagePost
     {
-        return $this->filename;
+        return $this->imagePost;
     }
 }

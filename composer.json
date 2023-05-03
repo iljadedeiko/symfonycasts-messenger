@@ -77,7 +77,7 @@
     },
     "require-dev": {
         "easycorp/easy-log-handler": "^1.0.7",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^9.6",
         "symfony/browser-kit": "4.3.*",
         "symfony/css-selector": "4.3.*",
         "symfony/debug-bundle": "4.3.*",
