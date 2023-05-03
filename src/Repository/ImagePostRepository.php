@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\ImagePost;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +19,18 @@ class ImagePostRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, ImagePost::class);
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    public function getImagePostCount(): ?int
+    {
+        $qb = $this->createQueryBuilder('image_post');
+        $qb->select('COUNT(image_post.id)');
+
+        return (int)$qb->getQuery()->getSingleScalarResult();
     }
 
     // /**

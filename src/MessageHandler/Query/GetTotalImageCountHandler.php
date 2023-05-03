@@ -17,23 +17,23 @@
 
 declare(strict_types=1);
 
-namespace App\MessageHandler\Event;
+namespace App\MessageHandler\Query;
 
-use App\Message\Event\ImagePostDeletedEvent;
-use App\Photo\PhotoFileManager;
+use App\Message\Query\GetTotalImageCount;
+use App\Repository\ImagePostRepository;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class RemoveFileWhenImagePostDeleted implements MessageHandlerInterface
+class GetTotalImageCountHandler implements MessageHandlerInterface
 {
-    private PhotoFileManager $photoFileManager;
+    private ImagePostRepository $imagePostRepository;
 
-    public function __construct(PhotoFileManager $photoFileManager)
+    public function __construct(ImagePostRepository $imagePostRepository)
     {
-        $this->photoFileManager = $photoFileManager;
+        $this->imagePostRepository = $imagePostRepository;
     }
 
-    public function __invoke(ImagePostDeletedEvent $event): void
+    public function __invoke(GetTotalImageCount $getTotalImageCount): int
     {
-        $this->photoFileManager->deleteImage($event->getFilename());
+        return $this->imagePostRepository->getImagePostCount();
     }
 }
